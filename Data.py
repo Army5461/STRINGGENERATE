@@ -19,16 +19,22 @@ You can use me to generate pyrogram and telethon string session. Use the below b
 
     generate_button = [
         [InlineKeyboardButton("🔥 Start Generating Session 🔥", callback_data="generate")]
-   
-     ]
+    ]
+
+    support_button = [
+        [InlineKeyboardButton("⚜ Support ⚜", url="https://https://t.me/+1OiLL3yZFsZkM2Nl")]
+    ]
+
     # Rest Buttons
     buttons = [
         [InlineKeyboardButton("🔥 Start Generating Session 🔥", callback_data="generate")],
+       
         [
             InlineKeyboardButton("How to Use ❔", callback_data="help"),
             InlineKeyboardButton(" About", callback_data="about")
         ],
-       
+        [InlineKeyboardButton("🇮🇳 Owner 🇮🇳", url="https://t.me/anonmyoushacks")],
+    ]
 
     # Help Message
     HELP = """
@@ -47,5 +53,5 @@ A telegram bot to generate pyrogram and telethon string session...
 [Telethon](docs.telethon.org)
 
 Language : [Python](www.python.org)
-           
+            **Regarding ~ **anonymous
 """
